@@ -1,0 +1,25 @@
+﻿
+
+drive
+
+	autorun.inf
+		No ",0" of "Icon=" for single .ico files
+
+
+	folder
+		The Folder attribute should be set as read-only. Having the system attribute may cause Windows file search to ignore the folder.
+
+		desktop.ini
+			The attributes For desktop.ini files can have the archive bit turned on.
+			The attributes should be set as Hidden and System.
+			"IconFile" and "IconIndex" are deprecated for the single "IconResource" field.	
+
+
+
+
+Note: A more common method of defining the icon resource is an explicit reference to a .ico file. Example: icon=autorun.ico
+
+Note: The icon defined representing your application's CD or DVD is the drive icon as viewed with My Computer or Explorer. Valid file types containing icons include .ICO .BMP .EXE .DLL
+	  If the file includes more than one icon, by default, the second icon in the files icon resource will be displayed.
+
+GetPathRoot method - "/" (path specified an absolute path on the current drive). "i.e. if C: is selected"

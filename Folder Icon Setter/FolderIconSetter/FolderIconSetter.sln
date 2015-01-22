@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderIconSetter", "FolderIconSetter\FolderIconSetter.csproj", "{1DB9BECD-C151-45B0-8031-922084CCA257}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderIconSetterTests", "FolderIconSetterTests\FolderIconSetterTests.csproj", "{BC02E647-1D5B-4900-AFF7-C7BAB208B4E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DB9BECD-C151-45B0-8031-922084CCA257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB9BECD-C151-45B0-8031-922084CCA257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB9BECD-C151-45B0-8031-922084CCA257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB9BECD-C151-45B0-8031-922084CCA257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC02E647-1D5B-4900-AFF7-C7BAB208B4E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC02E647-1D5B-4900-AFF7-C7BAB208B4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC02E647-1D5B-4900-AFF7-C7BAB208B4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC02E647-1D5B-4900-AFF7-C7BAB208B4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
