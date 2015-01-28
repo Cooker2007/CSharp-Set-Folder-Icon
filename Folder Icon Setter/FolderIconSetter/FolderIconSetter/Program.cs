@@ -23,25 +23,33 @@ namespace FolderIconSetter
 
         public void Execute()
         {
-            if (OutputProcessing.Validate(this.selection.IconFullyQualifiedPath, this.selection.IconDirectoryPath, this.selection.DisplayFolderDirectory))
+            if (OutputProcessing.Validate(
+                this.selection.IconFullyQualifiedPath,
+                this.selection.IconDirectoryPath,
+                this.selection.DisplayFolderDirectory))
             {
-
-                //TODO Check if text file exists
-                    //TODO ask user for confirmation
-                        //TODO process existing file
-
-                if (!OutputProcessing.IsDisplayFolderRoot(selection.DisplayFolderDirectory))
+                if (OutputProcessing.CheckFileExists(selection.DisplayFolderDirectory))
                 {
-                    OutputProcessing.SetDisplayFolderReadOnly(this.selection.DisplayFolderDirectory);
+                    
+
+                    //TODO Check if text file exists
+                    //TODO ask user for confirmation
+                    //TODO process existing file
+
+                    // Sets "ReadOnly" for non root and non "System" folders.
+                    if (!OutputProcessing.IsDisplayFolderRoot(selection.DisplayFolderDirectory)
+                        && !OutputProcessing.IsFolderSystem(selection.DisplayFolderDirectory))
+                    {
+                        OutputProcessing.SetDisplayFolderReadOnly(this.selection.DisplayFolderDirectory);
+                    }
+
+                    TextFileOutput.WriteNew(
+                        OutputProcessing.IsDisplayFolderRoot(selection.DisplayFolderDirectory),
+                        this.selection.DisplayFolderDirectory,
+                        this.selection.IconFullyQualifiedPath,
+                        driveLabel);
                 }
-
-                TextFileOutput.WriteNew(
-                    OutputProcessing.IsDisplayFolderRoot(selection.DisplayFolderDirectory),
-                    this.selection.DisplayFolderDirectory,
-                    this.selection.IconFullyQualifiedPath,
-                    driveLabel);
             }
-
         }
     }
 }

@@ -59,7 +59,7 @@ namespace FolderIconSetter
 
         private void MenuFileClose_Click(object sender, RoutedEventArgs e)
         {
-            
+            Application.Current.Shutdown();
         }
 
         private void MenuHelpHelp_Click(object sender, RoutedEventArgs e)
