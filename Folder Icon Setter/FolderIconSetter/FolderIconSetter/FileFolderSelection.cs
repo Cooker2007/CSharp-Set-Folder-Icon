@@ -77,18 +77,7 @@ namespace FolderIconSetter
             return this.IconDirectoryPath;
         }
 
-        /// <summary>
-        /// Determines if the selected folders have the same root path
-        /// </summary>
-        /// <returns>Returns a bool value</returns>
-        public bool ComparePathRoots()
-        {
-            bool result = !String.IsNullOrWhiteSpace(this.DisplayFolderDirectory)
-                       && !String.IsNullOrWhiteSpace(this.IconDirectoryPath) 
-                       && Path.GetPathRoot(this.DisplayFolderDirectory).Equals(Path.GetPathRoot(this.IconDirectoryPath));
 
-            return result;
-        }
 
 
 

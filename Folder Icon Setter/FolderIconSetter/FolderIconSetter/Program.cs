@@ -38,7 +38,7 @@ namespace FolderIconSetter
 
                     // Sets "ReadOnly" for non root and non "System" folders.
                     if (!OutputProcessing.IsDisplayFolderRoot(selection.DisplayFolderDirectory)
-                        && !OutputProcessing.IsFolderSystem(selection.DisplayFolderDirectory))
+                        && !OutputProcessing.IsDisplayFolderRoot(selection.DisplayFolderDirectory))
                     {
                         OutputProcessing.SetDisplayFolderReadOnly(this.selection.DisplayFolderDirectory);
                     }
