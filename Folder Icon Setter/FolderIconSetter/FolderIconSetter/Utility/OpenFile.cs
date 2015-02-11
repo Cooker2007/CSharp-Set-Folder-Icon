@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FolderIconSetter
+﻿namespace FolderIconSetter.Utility
 {
-    using System.IO;
     using System.Windows.Forms;
 
     public class OpenFile
@@ -30,32 +23,26 @@ namespace FolderIconSetter
             this.iconFileDialog.CheckFileExists = true;
             this.iconFileDialog.CheckPathExists = true;
 
-            Name = "";
-            FullyQualified = "";
-            FilePath = "";
+            this.Name = "";
+            this.FullyQualified = "";
+            this.FilePath = "";
 
         }
-
 
         /// <summary>
         /// Opens the File Dialog and sets the Properties
         /// </summary>
-        public void SelectIcon()
+        public string SelectIcon()
         {
             DialogResult result = this.iconFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                FullyQualified = iconFileDialog.FileName;
-                FilePath = FullyQualified.TrimEnd(Name.ToCharArray());
-                Name = iconFileDialog.SafeFileName;
+                this.FullyQualified = this.iconFileDialog.FileName;
+                this.FilePath = this.FullyQualified.TrimEnd(this.Name.ToCharArray());
+                this.Name = this.iconFileDialog.SafeFileName;
             }
+            return FullyQualified;
         }
-
-
-
-
-
-
     }
 }

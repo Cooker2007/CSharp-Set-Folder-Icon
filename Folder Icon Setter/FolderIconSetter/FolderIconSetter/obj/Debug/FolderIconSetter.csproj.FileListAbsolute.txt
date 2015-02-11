@@ -66,3 +66,17 @@ C:\Users\Michael\Desktop\Folder Icon Setter\FolderIconSetter\FolderIconSetter\ob
 C:\Users\Michael\Desktop\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.exe
 C:\Users\Michael\Desktop\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.pdb
 C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\FolderIconSetter.exe.config
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\MainWindow.g.cs
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\App.g.cs
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter_MarkupCompile.cache
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter_MarkupCompile.lref
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\FolderIconSetter.exe
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\FolderIconSetter.pdb
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\MainWindow.baml
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.g.resources
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.Properties.Resources.resources
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.csproj.GenerateResource.Cache
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.exe
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.pdb

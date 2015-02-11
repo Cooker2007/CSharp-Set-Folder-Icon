@@ -1,11 +1,9 @@
-﻿using System;
-using System.IO;
-
-namespace FolderIconSetter
+﻿namespace FolderIconSetter.Utility
 {
-    
+    using System;
+    using System.IO;
 
-   static class TextFileOutput
+    static class TextFileOutput
     {
         /// <summary>
         /// Writes the text file needed to display the Icon. I can only handle single image .ico files.
@@ -13,12 +11,12 @@ namespace FolderIconSetter
         /// <param name="isRoot">Determines if "autorun.inf" or "desktop.ini" is used. </param>
         /// <param name="displayFolderPath"></param>
         /// <param name="iconFullPath"></param>
-        /// <param name="displayFolderLabel">Text for the system to display for the hard drive or flash drive name.</param>
-        static public void WriteNew(bool isRoot, string displayFolderPath, string iconFullPath, string displayFolderLabel ="")
+        /// <param name="driveLabel">Text for the system to display for the hard drive or flash drive name.</param>
+        static public void WriteNew(bool isRoot, string displayFolderPath, string iconFullPath, string driveLabel = "")
         {
                 if (isRoot)
                 {
-                    WriteAutorunInf(displayFolderPath, iconFullPath, displayFolderLabel);
+                    WriteAutorunInf(displayFolderPath, iconFullPath, driveLabel);
                 }
                 else
                 {
@@ -34,22 +32,22 @@ namespace FolderIconSetter
        /// </summary>
        /// <param name="displayFolderPath"></param>
        /// <param name="iconFullPath"></param>
-       /// <param name="displayFolderLabel"></param>
+       /// <param name="driveLabel"></param>
        private static void WriteAutorunInf(
            string displayFolderPath,
            string iconFullPath,
-           string displayFolderLabel)
+           string driveLabel)
        {
-           String relativePath = PathManipulation.MakeRelativePath(displayFolderPath + "\\autorun.inf", iconFullPath);
+           String relativePath = Utilities.MakeRelativePath(displayFolderPath + "\\autorun.inf", iconFullPath);
 
            using (StreamWriter outputFile = new StreamWriter(displayFolderPath + "\\autorun.inf"))
            {
                outputFile.WriteLine("[Autorun]");
                outputFile.Write("Icon=\"{0}\"", relativePath);
                
-               if (displayFolderLabel != "")
+               if (driveLabel != "")
                {
-                   outputFile.WriteLine("Label=\"{0}\"", displayFolderLabel);
+                   outputFile.WriteLine("Label=\"{0}\"", driveLabel);
                }
            }
        }
@@ -67,7 +65,7 @@ namespace FolderIconSetter
            string iconFullPath)
        {
 
-           String relativePath = PathManipulation.MakeRelativePath(displayFolderPath + "\\desktop.ini", iconFullPath);
+           String relativePath = Utilities.MakeRelativePath(displayFolderPath + "\\desktop.ini", iconFullPath);
 
            using (StreamWriter outputFile = new StreamWriter(displayFolderPath + "\\desktop.ini"))
            {

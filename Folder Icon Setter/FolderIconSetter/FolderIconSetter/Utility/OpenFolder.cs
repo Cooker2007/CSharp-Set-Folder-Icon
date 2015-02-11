@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FolderIconSetter
+﻿namespace FolderIconSetter.Utility
 {
-    using System.Windows.Controls;
+    using System;
     using System.Windows.Forms;
 
+    //TODO Change from a folder browser to a file browser
     class OpenFolder
     {
+
+        //TODO Change to a file browser
         private FolderBrowserDialog displayFolderDialog;
 
         public string Path { get; set; }
@@ -22,8 +19,8 @@ namespace FolderIconSetter
             this.displayFolderDialog.Description = "Select Folder for the icon";
             this.displayFolderDialog.RootFolder = Environment.SpecialFolder.MyComputer;
             this.displayFolderDialog.ShowNewFolderButton = true;
-
-            Path = String.Empty;
+            
+            this.Path = String.Empty;
 
         }
 
@@ -33,7 +30,7 @@ namespace FolderIconSetter
         /// Gets the path of the folder to change its icon
         /// </summary>
         /// <returns>Returns and sets the folder path</returns>
-        public string FolderSelect()
+        public string SelectFolder()
         {
             DialogResult result = this.displayFolderDialog.ShowDialog();
 
@@ -42,7 +39,7 @@ namespace FolderIconSetter
                 this.Path = this.displayFolderDialog.SelectedPath;
             }
 
-            return this.displayFolderDialog.SelectedPath;
+            return Path;
         }
 
 

@@ -70,15 +70,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FileFolderSelection.cs" />
+    <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\SelectedPaths.cs" />
-    <Compile Include="OpenFile.cs" />
-    <Compile Include="OpenFolder.cs" />
-    <Compile Include="OutputProcessing.cs" />
-    <Compile Include="PathManipulation.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Utility\OpenFile.cs" />
+    <Compile Include="Utility\OpenFolder.cs" />
+    <Compile Include="Utility\OutputProcessing.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Utilities.cs" />
+    <Compile Include="Utility\RelayCommand.cs" />
+    <Compile Include="Utility\Utilities.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModelMain.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,7 +88,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TextFileOutput.cs" />
+    <Compile Include="Utility\TextFileOutput.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -111,7 +112,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,7 +141,9 @@
   <ItemGroup>
     <Resource Include="Usefull Information.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="To Remove\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

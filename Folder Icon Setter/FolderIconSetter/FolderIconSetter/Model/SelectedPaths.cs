@@ -8,38 +8,75 @@ namespace FolderIconSetter.Model
 {
     using System.ComponentModel;
 
-    class SelectedPaths : INotifyPropertyChanged
+    class SelectedPaths : ModelBase
     {
         private string iconPath;
-        public 
-
+        
         public string IconPath
         {
             get
             {
-                return this.iconPath;
+                return this.iconPath ?? (this.iconPath = String.Empty);
             }
             set
             {
-                if (iconPath == null)
+                if (value != null)
                 {
-                    iconPath = String.Empty;
+                    this.iconPath = value;
+                    RaisePropertyChanged("IconPath");
                 }
                 else
                 {
-                    this.iconPath = value;
+
+                    iconPath = String.Empty;
+
                 }
             }
         }
 
         private string folderPath;
 
-
-
-        void RaisePropertyChanged(string prop)
+        public string FolderPath
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            get
+            {
+                return this.folderPath ?? (this.folderPath = String.Empty);
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this.folderPath = value;
+                    RaisePropertyChanged("FolderPath");
+                }
+                else
+                {
+                    folderPath = String.Empty;
+                }
+            }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string driveName;
+
+        public string DriveName
+        {
+            get
+            {
+                return this.driveName ?? (this.driveName = String.Empty);
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this.driveName = value;
+                    RaisePropertyChanged("DriveName");
+                    
+                }
+                else
+                {
+                    this.driveName = String.Empty;
+                }
+            }
+        }
     }
 }
