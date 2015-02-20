@@ -80,3 +80,9 @@ C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\Fold
 C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.csproj.GenerateResource.Cache
 C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.exe
 C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.pdb
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\FolderIconSetter.exe.CodeAnalysisLog.xml
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\FolderIconSetter.exe.lastcodeanalysissucceeded
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\PostSharp.dll
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\PostSharp.xml
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\FolderIconSetter.pssym
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\FolderIconSetter.exe.postsharp

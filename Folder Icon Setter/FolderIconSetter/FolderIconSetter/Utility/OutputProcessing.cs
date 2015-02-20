@@ -1,22 +1,44 @@
-﻿namespace FolderIconSetter.Utility
-{
-    using System;
-    using System.IO;
-    using System.Windows.Media;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OutputProcessing.cs" company="">
+//
+// </copyright>
+// <summary>
+//   The output processing.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
+namespace FolderIconSetter.Utility
+{
+    using System.IO;
+
+    /// <summary>
+    /// The output processing.
+    /// </summary>
     internal static class OutputProcessing
     {
         // Validate
         // Folder Attribute
         // File Attribute
         // File Already Exists
-        // Folder does not exist
+        //// Folder does not exist
 
+        /// <summary>
+        /// The execute.
+        /// </summary>
+        /// <param name="folderPath">
+        /// The folder path.
+        /// </param>
+        /// <param name="iconPath">
+        /// The icon path.
+        /// </param>
+        /// <param name="driveLabel">
+        /// The drive label.
+        /// </param>
         public static void Execute(string folderPath, string iconPath, string driveLabel)
         {
             if (CheckFileExists(folderPath))
             {
-                // Checks if the folder and icon are on same drive 
+                // Checks if the folder and icon are on same drive
                 if (Utilities.Validate(folderPath, iconPath))
                 {
                     bool overwriteFile = false;
@@ -25,21 +47,20 @@
                     // Check if there is already a .ini/.inf file
                     if (CheckFileExists(folderPath))
                     {
-                        //TODO User conformation to overwrite file
+                        // TODO User conformation to overwrite file
                         overwriteFile = true;
                         fileExists = true;
                     }
-                    
+
                     // File does not exist OR can be overridden
                     // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-                    if ( !fileExists || overwriteFile)
+                    if (!fileExists || overwriteFile)
                     {
-
                         // Set the folder attributes for non-root folders
                         if (!IsDisplayFolderRoot(folderPath))
                         {
                             DirectoryInfo directoryInfo = new DirectoryInfo(folderPath);
-                            
+
                             if (!directoryInfo.Attributes.IsSet(FileAttributes.System))
                             {
                                 directoryInfo.Attributes |= FileAttributes.ReadOnly;
@@ -60,11 +81,7 @@
                             }
                         }
 
-                        TextFileOutput.WriteNew(
-                                    IsDisplayFolderRoot(folderPath),
-                                    folderPath,
-                                    iconPath,
-                                    driveLabel);
+                        TextFileOutput.WriteNew(IsDisplayFolderRoot(folderPath), folderPath, iconPath, driveLabel);
                     }
                 }
             }
@@ -73,21 +90,29 @@
         /// <summary>
         /// Check if output file exists
         /// </summary>
-        /// <param name="displayFolderDirectory"></param>
-        /// <returns>Returns a bool value</returns>
+        /// <param name="displayFolderDirectory">
+        /// </param>
+        /// <returns>
+        /// Returns a bool value
+        /// </returns>
         public static bool CheckFileExists(string displayFolderDirectory)
         {
             // Case Insensitive on Windows
             return IsDisplayFolderRoot(displayFolderDirectory)
-                         ? File.Exists(displayFolderDirectory + "autorun.inf")
-                         : File.Exists(displayFolderDirectory + "desktop.ini");
+                       ? File.Exists(displayFolderDirectory + "autorun.inf")
+                       : File.Exists(displayFolderDirectory + "desktop.ini");
         }
 
         /// <summary>
         /// Determines if the Display folder is the root folder
         /// </summary>
-        /// <returns>Returns a bool value</returns>
-        static public bool IsDisplayFolderRoot(string displayFolderDirectory)
+        /// <param name="displayFolderDirectory">
+        /// The display Folder Directory.
+        /// </param>
+        /// <returns>
+        /// Returns a bool value
+        /// </returns>
+        public static bool IsDisplayFolderRoot(string displayFolderDirectory)
         {
             return Path.GetPathRoot(displayFolderDirectory).Equals(displayFolderDirectory);
         }
@@ -95,7 +120,8 @@
         /// <summary>
         /// Removes "System" allowing the file to be overwritten.
         /// </summary>
-        /// <param name="displayFolderDirectory"></param>
+        /// <param name="displayFolderDirectory">
+        /// </param>
         public static void RemoveSystemFileAttribute(string displayFolderDirectory)
         {
             // TODO Check if filename is case sensitive
@@ -107,12 +133,19 @@
             {
                 displayFolderDirectory += "desktop.ini";
             }
-            
+
             FileInfo fileToChange = new FileInfo(displayFolderDirectory);
+
             // Bitwise Remove
             fileToChange.Attributes &= ~FileAttributes.System;
         }
 
+        /// <summary>
+        /// The remove file attributes.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
         public static void RemoveFileAttributes(string path)
         {
             FileInfo fileInfo = new FileInfo(path);
@@ -120,7 +153,5 @@
             fileInfo.Attributes &= FileAttributes.System;
             fileInfo.Attributes &= FileAttributes.Hidden;
         }
-
-
     }
 }

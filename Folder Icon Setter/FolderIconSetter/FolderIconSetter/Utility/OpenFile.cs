@@ -1,48 +1,134 @@
-﻿namespace FolderIconSetter.Utility
+﻿
+namespace FolderIconSetter.Utility
 {
     using System.Windows.Forms;
 
+    using FolderIconSetter.Annotations;
+
+    /// <summary>
+    /// Wrapper class for OpenFileDialog.
+    /// </summary>
     public class OpenFile
     {
-        private OpenFileDialog iconFileDialog;
-        
-        public string Name { get; set; }
+        /// <summary>
+        /// The open file dialog for selecting the icon.
+        /// </summary>
+        [NotNull]
+        private readonly OpenFileDialog iconFileDialog;
 
-        public string FilePath{ get; set; }
+        /// <summary>
+        /// The file name.
+        /// </summary>
+        private string name;
 
-        public string FullyQualified { get; set; }
+        /// <summary>
+        /// The file path.
+        /// </summary>
+        private string filePath;
 
+        /// <summary>
+        /// The fully qualified file path.
+        /// </summary>
+        private string fullyQualified;
 
-        // Constructor
-        public OpenFile()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenFile"/> class.
+        /// </summary>
+        /// <param name="title">
+        /// The title of the dialog.
+        /// </param>
+        /// <param name="filter">
+        /// The filter for the desired file types.
+        /// </param>
+        public OpenFile(string title = "Select...", string filter = "")
         {
-            this.iconFileDialog = new OpenFileDialog();
-            this.iconFileDialog.Title = "Select the icon file.";
-            this.iconFileDialog.CheckFileExists = true;
-            this.iconFileDialog.Filter = "Icon Files (*.ico)|*.ico";
+            this.iconFileDialog = new OpenFileDialog
+                                      {
+                                          Title = title,
+                                          CheckFileExists = true,
+                                          Filter = filter
+                                      };
             this.iconFileDialog.CheckFileExists = true;
             this.iconFileDialog.CheckPathExists = true;
 
-            this.Name = "";
-            this.FullyQualified = "";
-            this.FilePath = "";
+            this.Name = string.Empty;
+            this.FullyQualified = string.Empty;
+            this.FilePath = string.Empty;
+        }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        [NotNull]
+        public string Name
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(this.name) ? string.Empty : this.name;
+            }
+
+            set
+            {
+                this.name = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the file path.
+        /// </summary>
+        [NotNull]
+        public string FilePath
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(this.filePath) ? string.Empty : this.filePath;
+            }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    this.filePath = string.Empty;
+                }
+                this.filePath = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the fully qualified.
+        /// </summary>
+        [NotNull]
+        public string FullyQualified
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(this.fullyQualified))
+                {
+                    this.fullyQualified = string.Empty;
+                }
+
+                return this.fullyQualified;
+            }
+
+            set
+            {
+                this.fullyQualified = value;
+            }
         }
 
         /// <summary>
         /// Opens the File Dialog and sets the Properties
         /// </summary>
-        public string SelectIcon()
+        public void SelectIcon()
         {
             DialogResult result = this.iconFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
             {
                 this.FullyQualified = this.iconFileDialog.FileName;
-                this.FilePath = this.FullyQualified.TrimEnd(this.Name.ToCharArray());
                 this.Name = this.iconFileDialog.SafeFileName;
+                this.FilePath = this.FullyQualified.TrimEnd(this.Name.ToCharArray());
             }
-            return FullyQualified;
         }
     }
 }

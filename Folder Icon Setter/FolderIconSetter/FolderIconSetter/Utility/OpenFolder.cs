@@ -1,30 +1,46 @@
-﻿namespace FolderIconSetter.Utility
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OpenFolder.cs" company="">
+//
+// </copyright>
+// <summary>
+//   The open folder.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace FolderIconSetter.Utility
 {
     using System;
     using System.Windows.Forms;
 
-    //TODO Change from a folder browser to a file browser
-    class OpenFolder
+    // TODO Change from a folder browser to a file browser
+    /// <summary>
+    /// The open folder.
+    /// </summary>
+    internal class OpenFolder
     {
-
-        //TODO Change to a file browser
+        // TODO Change to a file browser
+        /// <summary>
+        /// The display folder dialog.
+        /// </summary>
         private FolderBrowserDialog displayFolderDialog;
 
+        /// <summary>
+        /// Gets or sets the path.
+        /// </summary>
         public string Path { get; set; }
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenFolder"/> class.
+        /// </summary>
         public OpenFolder()
         {
             this.displayFolderDialog = new FolderBrowserDialog();
-            this.displayFolderDialog.Description = "Select Folder for the icon";
+            this.displayFolderDialog.Description = @"Select Folder for the icon";
             this.displayFolderDialog.RootFolder = Environment.SpecialFolder.MyComputer;
             this.displayFolderDialog.ShowNewFolderButton = true;
-            
-            this.Path = String.Empty;
 
+            this.Path = string.Empty;
         }
-
-
 
         /// <summary>
         /// Gets the path of the folder to change its icon
@@ -41,11 +57,5 @@
 
             return Path;
         }
-
-
-
-
-
-
     }
 }

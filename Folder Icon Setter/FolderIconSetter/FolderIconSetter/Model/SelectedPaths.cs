@@ -1,23 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SelectedPaths.cs" company="">
+//
+// </copyright>
+// <summary>
+//   The selected paths.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace FolderIconSetter.Model
 {
-    using System.ComponentModel;
-
-    class SelectedPaths : ModelBase
+    /// <summary>
+    /// The selected paths.
+    /// </summary>
+    internal class SelectedPaths : ModelBase
     {
+        /// <summary>
+        /// The icon path.
+        /// </summary>
         private string iconPath;
-        
+
+        /// <summary>
+        /// Gets or sets the icon path.
+        /// </summary>
         public string IconPath
         {
             get
             {
-                return this.iconPath ?? (this.iconPath = String.Empty);
+                return this.iconPath ?? (this.iconPath = string.Empty);
             }
+
             set
             {
                 if (value != null)
@@ -27,21 +38,26 @@ namespace FolderIconSetter.Model
                 }
                 else
                 {
-
-                    iconPath = String.Empty;
-
+                    iconPath = string.Empty;
                 }
             }
         }
 
+        /// <summary>
+        /// The folder path.
+        /// </summary>
         private string folderPath;
 
+        /// <summary>
+        /// Gets or sets the folder path.
+        /// </summary>
         public string FolderPath
         {
             get
             {
-                return this.folderPath ?? (this.folderPath = String.Empty);
+                return this.folderPath ?? (this.folderPath = string.Empty);
             }
+
             set
             {
                 if (value != null)
@@ -51,30 +67,36 @@ namespace FolderIconSetter.Model
                 }
                 else
                 {
-                    folderPath = String.Empty;
+                    folderPath = string.Empty;
                 }
             }
         }
 
+        /// <summary>
+        /// The drive name.
+        /// </summary>
         private string driveName;
 
+        /// <summary>
+        /// Gets or sets the drive name.
+        /// </summary>
         public string DriveName
         {
             get
             {
-                return this.driveName ?? (this.driveName = String.Empty);
+                return this.driveName ?? (this.driveName = string.Empty);
             }
+
             set
             {
                 if (value != null)
                 {
                     this.driveName = value;
                     RaisePropertyChanged("DriveName");
-                    
                 }
                 else
                 {
-                    this.driveName = String.Empty;
+                    this.driveName = string.Empty;
                 }
             }
         }
