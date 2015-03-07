@@ -1,10 +1,11 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Threading;
+﻿
 
 namespace FolderIconSetter.ViewModel
 {
+    using System;
+    using System.ComponentModel;
+    using System.Windows;
+    using System.Windows.Threading;
     using System.Diagnostics;
 
     /// <summary>

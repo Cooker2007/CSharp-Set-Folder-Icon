@@ -1,22 +1,23 @@
-﻿using System;
+﻿
 
 namespace FolderIconSetter.Model
 {
+    using System;
     using System.ComponentModel;
     using System.Diagnostics;
 
     /// <summary>
-    /// The model base.
+    /// The base class for the models.
     /// </summary>
     internal class ModelBase : INotifyPropertyChanged
     {
         /// <summary>
-        /// The property changed.
+        /// The property changed event.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// The raise property changed.
+        ///  Raise the property changed event.
         /// </summary>
         /// <param name="propertyName">
         /// The property name.

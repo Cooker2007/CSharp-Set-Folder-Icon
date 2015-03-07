@@ -1,9 +1,7 @@
-﻿
-namespace FolderIconSetter.Utility
+﻿namespace FolderIconSetter.Utility
 {
-    using System.Windows.Forms;
-
     using FolderIconSetter.Annotations;
+    using System.Windows.Forms;
 
     /// <summary>
     /// Wrapper class for OpenFileDialog.

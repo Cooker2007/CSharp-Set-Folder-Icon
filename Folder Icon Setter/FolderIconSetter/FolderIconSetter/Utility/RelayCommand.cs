@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace FolderIconSetter.Utility
+﻿namespace FolderIconSetter.Utility
 {
+    using System;
     using System.Diagnostics;
     using System.Windows.Input;
 

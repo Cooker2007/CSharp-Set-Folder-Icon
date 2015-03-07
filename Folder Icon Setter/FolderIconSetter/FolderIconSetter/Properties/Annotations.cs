@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 
 #pragma warning disable 1591
 
@@ -11,6 +11,8 @@
 // ReSharper disable InconsistentNaming
 namespace FolderIconSetter.Annotations
 {
+    using System;
+
     /// <summary>
     /// Indicates that the value of the marked element could be <c>null</c> sometimes,
     /// so the check for <c>null</c> is necessary before its usage
