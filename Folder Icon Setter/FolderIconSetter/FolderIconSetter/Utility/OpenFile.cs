@@ -51,7 +51,7 @@ namespace FolderIconSetter.Utility
             this.iconFileDialog.CheckFileExists = true;
             this.iconFileDialog.CheckPathExists = true;
 
-            this.Name = string.Empty;
+            this.Name = "";
             this.FullyQualified = string.Empty;
             this.FilePath = string.Empty;
         }
@@ -59,29 +59,27 @@ namespace FolderIconSetter.Utility
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [NotNull]
         public string Name
         {
             get
             {
-                return string.IsNullOrWhiteSpace(this.name) ? string.Empty : this.name;
+                return this.name ?? (this.name = string.Empty);
             }
 
             set
             {
-                this.name = value;
+                this.name = string.IsNullOrWhiteSpace(value) ? string.Empty : value;
             }
         }
 
         /// <summary>
         /// Gets or sets the file path.
         /// </summary>
-        [NotNull]
         public string FilePath
         {
             get
             {
-                return string.IsNullOrWhiteSpace(this.filePath) ? string.Empty : this.filePath;
+                return this.filePath ?? (this.filePath = string.Empty);
             }
 
             set
@@ -97,7 +95,6 @@ namespace FolderIconSetter.Utility
         /// <summary>
         /// Gets or sets the fully qualified.
         /// </summary>
-        [NotNull]
         public string FullyQualified
         {
             get

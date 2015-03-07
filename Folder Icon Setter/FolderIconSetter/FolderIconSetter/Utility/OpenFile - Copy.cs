@@ -15,7 +15,6 @@ namespace FolderIconSetter.Utility
         /// <summary>
         /// The open file dialog for selecting the icon.
         /// </summary>
-        [NotNull]
         private readonly OpenFileDialog iconFileDialog;
 
         /// <summary>
@@ -62,7 +61,6 @@ namespace FolderIconSetter.Utility
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [NotNull]
         public string Name
         {
             get
@@ -79,7 +77,6 @@ namespace FolderIconSetter.Utility
         /// <summary>
         /// Gets or sets the file path.
         /// </summary>
-        [NotNull]
         public string FilePath
         {
             get
@@ -96,7 +93,6 @@ namespace FolderIconSetter.Utility
         /// <summary>
         /// Gets or sets the fully qualified.
         /// </summary>
-        [NotNull]
         public string FullyQualified
         {
             get

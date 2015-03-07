@@ -10,7 +10,7 @@
        <Types>
         <Type Name="OpenFolder" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2015-02-19 04:06:10Z" FixCategory="NonBreaking">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2015-03-02 19:27:44Z" FixCategory="NonBreaking">
            <Issue Name="NonBreaking" Certainty="95" Level="CriticalError">Implement IDisposable on 'OpenFolder' because it creates members of the following IDisposable types: 'FolderBrowserDialog'.</Issue>
           </Message>
          </Messages>
