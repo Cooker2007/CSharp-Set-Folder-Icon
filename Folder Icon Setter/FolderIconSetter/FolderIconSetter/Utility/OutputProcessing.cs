@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OutputProcessing.cs" company="">
-//
-// </copyright>
-// <summary>
-//   The output processing.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace FolderIconSetter.Utility
+﻿namespace FolderIconSetter.Utility
 {
     using System.IO;
 

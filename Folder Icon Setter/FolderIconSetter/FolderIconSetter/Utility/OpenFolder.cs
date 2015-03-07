@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="OpenFolder.cs" company="">
-//
-// </copyright>
-// <summary>
-//   The open folder.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace FolderIconSetter.Utility
+﻿namespace FolderIconSetter.Utility
 {
     using System;
     using System.Windows.Forms;

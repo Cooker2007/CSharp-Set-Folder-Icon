@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SelectedPaths.cs" company="">
-//   
-// </copyright>
-// <summary>
-//   The selected paths.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace FolderIconSetter.Model
+﻿namespace FolderIconSetter.Model
 {
     using System;
     using System.IO;

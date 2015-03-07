@@ -1,14 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Annotations.cs" company="">
-//
-// </copyright>
-// <summary>
-//   Indicates that the value of the marked element could be <c>null</c> sometimes,
-//   so the check for <c>null</c> is necessary before its usage
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System;
+﻿using System;
 
 #pragma warning disable 1591
 

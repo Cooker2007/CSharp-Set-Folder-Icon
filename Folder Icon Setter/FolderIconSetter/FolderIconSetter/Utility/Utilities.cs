@@ -1,13 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Utilities.cs" company="">
-//
-// </copyright>
-// <summary>
-//   The utilities.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace FolderIconSetter.Utility
+﻿namespace FolderIconSetter.Utility
 {
     using System;
     using System.IO;
