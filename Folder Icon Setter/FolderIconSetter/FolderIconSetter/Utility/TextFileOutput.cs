@@ -1,15 +1,9 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TextFileOutput.cs" company="">
-//
-// </copyright>
-// <summary>
-//   The text file output.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace FolderIconSetter.Utility
+﻿namespace FolderIconSetter.Utility
 {
+    using FolderIconSetter.Model;
+    using System;
     using System.IO;
+    using System.Text;
 
     /// <summary>
     /// The text file output.
@@ -17,73 +11,61 @@ namespace FolderIconSetter.Utility
     internal static class TextFileOutput
     {
         /// <summary>
-        /// Writes the text file needed to display the Icon. I can only handle single image .ico files.
+        /// Writes the text file to display the custom folder icon.
         /// </summary>
-        /// <param name="isRoot">
-        /// Determines if "autorun.inf" or "desktop.ini" is used.
-        /// </param>
-        /// <param name="displayFolderPath">
-        /// </param>
-        /// <param name="iconFullPath">
-        /// </param>
-        /// <param name="driveLabel">
-        /// Text for the system to display for the hard drive or flash drive name.
-        /// </param>
-        public static void WriteNew(bool isRoot, string displayFolderPath, string iconFullPath, string driveLabel = "")
+        /// <param name="paths">Referance to the SelectedPaths class.</param>
+        public static void WriteNew(SelectedPaths paths)
         {
-            if (isRoot)
+            // Updated Method to write file
+            string fileName = paths.IsRoot ? "\\autorun.inf" : "\\desktop.ini";
+            string fileContents = paths.IsRoot ?
+                MakeAutorunInfContents(paths.RelativePath) :
+                MakeDesktopIniContents(paths.RelativePath, paths.DriveName);
+
+            using (StreamWriter outputFile = new StreamWriter(paths.FolderPath + fileName))
             {
-                WriteAutorunInf(displayFolderPath, iconFullPath, driveLabel);
-            }
-            else
-            {
-                WriteDesktopIni(displayFolderPath, iconFullPath);
+                outputFile.Write(fileContents);
             }
         }
 
         /// <summary>
-        /// Creates the text for the autorun.inf file in the root of drives
+        /// Makes the text for the autorun.inf file.
         /// </summary>
-        /// <param name="displayFolderPath">
-        /// </param>
-        /// <param name="iconFullPath">
-        /// </param>
-        /// <param name="driveLabel">
-        /// </param>
-        private static void WriteAutorunInf(string displayFolderPath, string iconFullPath, string driveLabel)
+        /// <param name="relativePath">The relative path between the folder and the icon file.</param>
+        /// <returns>Returns a string.</returns>
+        private static string MakeAutorunInfContents(string relativePath)
         {
-            string relativePath = Utilities.MakeRelativePath(displayFolderPath + "\\autorun.inf", iconFullPath);
+            StringBuilder sb = new StringBuilder();
 
-            using (StreamWriter outputFile = new StreamWriter(displayFolderPath + "\\autorun.inf"))
-            {
-                outputFile.WriteLine("[Autorun]");
-                outputFile.Write("Icon=\"{0}\"", relativePath);
+            sb.Append("[.ShellClassInfo]");
+            sb.Append(Environment.NewLine);
 
-                if (driveLabel != string.Empty)
-                {
-                    outputFile.WriteLine("Label=\"{0}\"", driveLabel);
-                }
-            }
+            // No space between the comma and the 0
+            sb.AppendFormat("IconResource=\"{0}\",0", relativePath);
+            
+            return sb.ToString();
         }
 
         /// <summary>
-        /// Creates the text for the desktop.ini file for all non-root folders.
+        /// Makes the text contents for the desktop.ini file.
         /// </summary>
-        /// <param name="displayFolderPath">
-        /// </param>
-        /// <param name="iconFullPath">
-        /// </param>
-        private static void WriteDesktopIni(string displayFolderPath, string iconFullPath)
+        /// <param name="relativePath">The relative path between the folder and the icon file.</param>
+        /// <param name="driveName">Custom drive name the user chose.</param>
+        /// <returns>Returns a string</returns>
+        private static string MakeDesktopIniContents(string relativePath, string driveName)
         {
-            string relativePath = Utilities.MakeRelativePath(displayFolderPath + "\\desktop.ini", iconFullPath);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[Autorun]");
+            sb.Append(Environment.NewLine);
+            sb.AppendFormat("Icon=\"{0}\"", relativePath);
 
-            using (StreamWriter outputFile = new StreamWriter(displayFolderPath + "\\desktop.ini"))
+            if (driveName != string.Empty)
             {
-                outputFile.WriteLine("[.ShellClassInfo]");
-
-                // No space between the comma and 0!
-                outputFile.Write("IconResource=\"{0}\",0", relativePath);
+                sb.Append(Environment.NewLine);
+                sb.AppendFormat("Label=\"{0}\"", driveName);
             }
+
+            return sb.ToString();
         }
     }
 }
