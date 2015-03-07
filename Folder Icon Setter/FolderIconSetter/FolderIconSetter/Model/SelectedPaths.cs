@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="SelectedPaths.cs" company="">
-//
+//   
 // </copyright>
 // <summary>
 //   The selected paths.
@@ -13,75 +13,33 @@ namespace FolderIconSetter.Model
     using System.IO;
 
     /// <summary>
-    /// The selected paths.
+    ///     The selected paths.
     /// </summary>
     internal class SelectedPaths : ModelBase
     {
-        /// <summary>
-        /// The IconPath backing field.
-        /// </summary>
-        private string iconPath;
+        #region Fields
 
         /// <summary>
-        /// Gets or sets the icon path.
-        /// </summary>
-        public string IconPath
-        {
-            get
-            {
-                return this.iconPath ?? (this.iconPath = string.Empty);
-            }
-
-            set
-            {
-                if (value != null && !this.iconPath.Equals(value))
-                {
-                    this.iconPath = value;
-                    RaisePropertyChanged("IconPath");
-                }
-                else
-                {
-                    iconPath = string.Empty;
-                }
-            }
-        }
-
-        /// <summary>
-        /// The FolderPath backing field.
-        /// </summary>
-        private string folderPath;
-
-        /// <summary>
-        /// Gets or sets the path of the folder to change the icon.
-        /// </summary>
-        public string FolderPath
-        {
-            get
-            {
-                return this.folderPath ?? (this.folderPath = string.Empty);
-            }
-
-            set
-            {
-                if (value != null && !this.folderPath.Equals(value))
-                {
-                    this.folderPath = value;
-                    RaisePropertyChanged("FolderPath");
-                }
-                else
-                {
-                    folderPath = string.Empty;
-                }
-            }
-        }
-
-        /// <summary>
-        /// The DriveName backing field.
+        ///     The DriveName backing field.
         /// </summary>
         private string driveName;
 
         /// <summary>
-        /// Gets or sets the custom drive name.
+        ///     The FolderPath backing field.
+        /// </summary>
+        private string folderPath;
+
+        /// <summary>
+        ///     The IconPath backing field.
+        /// </summary>
+        private string iconPath;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the custom drive name.
         /// </summary>
         public string DriveName
         {
@@ -95,7 +53,7 @@ namespace FolderIconSetter.Model
                 if (value != null && !this.driveName.Equals(value))
                 {
                     this.driveName = value;
-                    RaisePropertyChanged("DriveName");
+                    this.RaisePropertyChanged("DriveName");
                 }
                 else
                 {
@@ -105,13 +63,60 @@ namespace FolderIconSetter.Model
         }
 
         /// <summary>
-        /// Gets a bool if the paths are on the same root drive.
+        ///     Gets or sets the path of the folder to change the icon.
+        /// </summary>
+        public string FolderPath
+        {
+            get
+            {
+                return this.folderPath ?? (this.folderPath = string.Empty);
+            }
+
+            set
+            {
+                if (value != null && !this.folderPath.Equals(value))
+                {
+                    this.folderPath = value;
+                    this.RaisePropertyChanged("FolderPath");
+                }
+                else
+                {
+                    this.folderPath = string.Empty;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the icon path.
+        /// </summary>
+        public string IconPath
+        {
+            get
+            {
+                return this.iconPath ?? (this.iconPath = string.Empty);
+            }
+
+            set
+            {
+                if (value != null && !this.iconPath.Equals(value))
+                {
+                    this.iconPath = value;
+                    this.RaisePropertyChanged("IconPath");
+                }
+                else
+                {
+                    this.iconPath = string.Empty;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets a bool if the paths are on the same root drive.
         /// </summary>
         public bool IsRoot
         {
             get
             {
-
                 try
                 {
                     // If a path is string.Empty an ArgumentException is thrown
@@ -125,5 +130,26 @@ namespace FolderIconSetter.Model
                 }
             }
         }
+
+
+        public string RelativePath
+        {
+            get
+            {
+                Uri folder = new Uri(this.FolderPath);
+                Uri icon = new Uri(this.IconPath);
+                Uri relativeUri = folder.MakeRelativeUri(icon);
+
+                string relativePath = relativeUri.ToString();
+
+                relativePath = relativePath.Replace('/', '\\');
+                relativePath = relativePath.Replace("%20", " ");
+
+                return relativePath;
+            }
+        }
+
+
+        #endregion
     }
 }
