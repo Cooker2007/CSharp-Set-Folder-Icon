@@ -1,18 +1,29 @@
-﻿
-
-namespace FolderIconSetter.ViewModel
+﻿namespace FolderIconSetter.ViewModel
 {
     using System;
     using System.ComponentModel;
+    using System.Diagnostics;
     using System.Windows;
     using System.Windows.Threading;
-    using System.Diagnostics;
 
     /// <summary>
     /// The view model base.
     /// </summary>
     internal class ViewModelBase : INotifyPropertyChanged
     {
+        #region Fields
+
+        //// Extra Stuff, shows why a base ViewModel is useful
+
+        /// <summary>
+        /// The close window flag.
+        /// </summary>
+        private bool? closeWindowFlag;
+
+        #endregion Fields
+
+        #region Constructors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewModelBase"/> class.
         /// </summary>
@@ -20,26 +31,33 @@ namespace FolderIconSetter.ViewModel
         {
         }
 
+        #endregion Constructors
+
+        #region Events
+
         /// <summary>
-        /// The property changed.
+        /// The property changed event.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        #endregion Events
+
+        #region Properties
+
         /// <summary>
-        /// The raise property changed.
+        /// Gets or sets a value indicating whether the close window flag is set.
         /// </summary>
-        /// <param name="propertyName">
-        /// The property name.
-        /// </param>
-        internal void RaisePropertyChanged(string propertyName)
+        public bool? CloseWindowFlag
         {
-            this.VerifyPropertyName(propertyName);
-
-            var handler = PropertyChanged;
-
-            if (handler != null)
+            get
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                return this.closeWindowFlag;
+            }
+
+            set
+            {
+                this.closeWindowFlag = value;
+                this.RaisePropertyChanged("CloseWindowFlag");
             }
         }
 
@@ -50,6 +68,23 @@ namespace FolderIconSetter.ViewModel
         /// override this property's getter to return true.
         /// </summary>
         protected virtual bool ThrowOnInvalidPropertyName { get; private set; }
+
+        #endregion Properties
+
+        #region Methods
+
+        /// <summary>
+        /// The close window.
+        /// </summary>
+        /// <param name="result">
+        /// The result.
+        /// </param>
+        public virtual void CloseWindow(bool? result = true)
+        {
+            Application.Current.Dispatcher.BeginInvoke(
+                DispatcherPriority.Background,
+                new Action(() => { CloseWindowFlag = CloseWindowFlag == null ? true : !CloseWindowFlag; }));
+        }
 
         /// <summary>
         /// Warns the developer if this object does not have
@@ -80,40 +115,24 @@ namespace FolderIconSetter.ViewModel
             }
         }
 
-        // Extra Stuff, shows why a base ViewModel is useful
         /// <summary>
-        /// The close window flag.
+        /// Raise property changed event.
         /// </summary>
-        private bool? closeWindowFlag;
-
-        /// <summary>
-        /// Gets or sets the close window flag.
-        /// </summary>
-        public bool? CloseWindowFlag
-        {
-            get
-            {
-                return this.closeWindowFlag;
-            }
-
-            set
-            {
-                this.closeWindowFlag = value;
-                RaisePropertyChanged("CloseWindowFlag");
-            }
-        }
-
-        /// <summary>
-        /// The close window.
-        /// </summary>
-        /// <param name="result">
-        /// The result.
+        /// <param name="propertyName">
+        /// The property name.
         /// </param>
-        public virtual void CloseWindow(bool? result = true)
+        internal void RaisePropertyChanged(string propertyName)
         {
-            Application.Current.Dispatcher.BeginInvoke(
-                DispatcherPriority.Background,
-                new Action(() => { CloseWindowFlag = CloseWindowFlag == null ? true : !CloseWindowFlag; }));
+            this.VerifyPropertyName(propertyName);
+
+            var handler = this.PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
+
+        #endregion Methods
     }
 }

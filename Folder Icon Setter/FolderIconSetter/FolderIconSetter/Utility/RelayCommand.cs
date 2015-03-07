@@ -12,15 +12,14 @@
         #region Fields
 
         /// <summary>
-        /// The execute.
-        /// </summary>
-        private readonly Action<object> execute;
-
-        /// <summary>
         /// The can execute.
         /// </summary>
         private readonly Predicate<object> canExecute;
 
+        /// <summary>
+        /// The execute.
+        /// </summary>
+        private readonly Action<object> execute;
         #endregion Fields
 
         #region Constructors
@@ -46,6 +45,7 @@
         /// The can execute.
         /// </param>
         /// <exception cref="ArgumentNullException">
+        /// Thowes an ArgumentNullException if passed a null Action.
         /// </exception>
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
@@ -63,21 +63,6 @@
         #region ICommand Members
 
         /// <summary>
-        /// The can execute.
-        /// </summary>
-        /// <param name="parameter">
-        /// The parameter.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
-        [DebuggerStepThrough]
-        public bool CanExecute(object parameter)
-        {
-            return this.canExecute == null ? true : this.canExecute(parameter);
-        }
-
-        /// <summary>
         /// The can execute changed.
         /// </summary>
         public event EventHandler CanExecuteChanged
@@ -91,6 +76,21 @@
             {
                 CommandManager.RequerySuggested -= value;
             }
+        }
+
+        /// <summary>
+        /// The can execute.
+        /// </summary>
+        /// <param name="parameter">
+        /// The parameter.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        [DebuggerStepThrough]
+        public bool CanExecute(object parameter)
+        {
+            return this.canExecute == null ? true : this.canExecute(parameter);
         }
 
         /// <summary>

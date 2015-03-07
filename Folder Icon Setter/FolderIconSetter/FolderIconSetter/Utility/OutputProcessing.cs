@@ -82,6 +82,7 @@
         /// Check if output file exists
         /// </summary>
         /// <param name="displayFolderDirectory">
+        /// The path of the folder to change.
         /// </param>
         /// <returns>
         /// Returns a bool value
@@ -98,7 +99,7 @@
         /// Determines if the Display folder is the root folder
         /// </summary>
         /// <param name="displayFolderDirectory">
-        /// The display Folder Directory.
+        /// The path of the folder to change.
         /// </param>
         /// <returns>
         /// Returns a bool value
@@ -112,6 +113,7 @@
         /// Removes "System" allowing the file to be overwritten.
         /// </summary>
         /// <param name="displayFolderDirectory">
+        /// The path of the folder to change.
         /// </param>
         public static void RemoveSystemFileAttribute(string displayFolderDirectory)
         {

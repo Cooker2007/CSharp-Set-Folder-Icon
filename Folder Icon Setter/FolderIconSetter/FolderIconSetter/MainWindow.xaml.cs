@@ -1,16 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" company="">
-//
-// </copyright>
-// <summary>
-//   The main window.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Windows;
-
-namespace FolderIconSetter
+﻿namespace FolderIconSetter
 {
+    using System.Windows;
+    
     /// <summary>
     /// The main window.
     /// </summary>
@@ -23,7 +14,7 @@ namespace FolderIconSetter
         /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         //// Buttons

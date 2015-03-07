@@ -25,9 +25,9 @@
         /// </summary>
         private string iconPath;
 
-        #endregion
+        #endregion Fields
 
-        #region Public Properties
+        #region Properties
 
         /// <summary>
         ///     Gets or sets the custom drive name.
@@ -102,7 +102,7 @@
         }
 
         /// <summary>
-        ///     Gets a bool if the paths are on the same root drive.
+        ///     Gets a value indicating whether the paths share the same root.
         /// </summary>
         public bool IsRoot
         {
@@ -122,7 +122,9 @@
             }
         }
 
-
+        /// <summary>
+        /// Gets a string representing the relative path of the selected paths.
+        /// </summary>
         public string RelativePath
         {
             get
@@ -140,7 +142,6 @@
             }
         }
 
-
-        #endregion
+        #endregion Properties
     }
 }

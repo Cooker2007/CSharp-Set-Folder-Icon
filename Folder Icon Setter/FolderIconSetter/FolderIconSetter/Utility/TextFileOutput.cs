@@ -1,9 +1,9 @@
 ﻿namespace FolderIconSetter.Utility
 {
-    using FolderIconSetter.Model;
     using System;
     using System.IO;
     using System.Text;
+    using FolderIconSetter.Model;
 
     /// <summary>
     /// The text file output.
@@ -13,7 +13,7 @@
         /// <summary>
         /// Writes the text file to display the custom folder icon.
         /// </summary>
-        /// <param name="paths">Referance to the SelectedPaths class.</param>
+        /// <param name="paths">Reference to the SelectedPaths class.</param>
         public static void WriteNew(SelectedPaths paths)
         {
             // Updated Method to write file

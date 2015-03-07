@@ -32,9 +32,9 @@
             this.displayFolder = new OpenFolder();
             this.iconFile = new OpenFile(@"Select the icon file.", @"Icon Files (*.ico)|*.ico");
 
-            this.ExecuteCommand = new RelayCommand(Execute, CanExecute);
-            this.FolderPathBrowserCommand = new RelayCommand(FolderPathBrowser);
-            this.FilePathBrowserCommand = new RelayCommand(FilePathBrowser);
+            this.ExecuteCommand = new RelayCommand(this.Execute, this.CanExecute);
+            this.FolderPathBrowserCommand = new RelayCommand(this.FolderPathBrowser);
+            this.FilePathBrowserCommand = new RelayCommand(this.FilePathBrowser);
         }
 
         /// <summary>
@@ -51,6 +51,7 @@
         /// Gets or sets the file path browser command.
         /// </summary>
         public RelayCommand FilePathBrowserCommand { get; set; }
+
         /// <summary>
         /// Gets or sets the folder path.
         /// </summary>
@@ -58,13 +59,13 @@
         {
             get
             {
-                return paths.FolderPath;
+                return this.paths.FolderPath;
             }
 
             set
             {
-                paths.FolderPath = value;
-                RaisePropertyChanged("FolderPath");
+                this.paths.FolderPath = value;
+                this.RaisePropertyChanged("FolderPath");
             }
         }
 
@@ -75,13 +76,13 @@
         {
             get
             {
-                return paths.IconPath;
+                return this.paths.IconPath;
             }
 
             set
             {
-                paths.IconPath = value;
-                RaisePropertyChanged("IconPath");
+                this.paths.IconPath = value;
+                this.RaisePropertyChanged("IconPath");
             }
         }
 
@@ -92,13 +93,13 @@
         {
             get
             {
-                return paths.DriveName;
+                return this.paths.DriveName;
             }
 
             set
             {
-                paths.DriveName = value;
-                RaisePropertyChanged("DriveName");
+                this.paths.DriveName = value;
+                this.RaisePropertyChanged("DriveName");
             }
         }
 
@@ -108,9 +109,9 @@
         /// <param name="parameter">
         /// The parameter.
         /// </param>
-        public void FolderPathBrowser(object parameter)
+        private void FolderPathBrowser(object parameter)
         {
-            FolderPath = displayFolder.SelectFolder();
+            this.FolderPath = this.displayFolder.SelectFolder();
         }
 
         /// <summary>
@@ -119,10 +120,10 @@
         /// <param name="parameter">
         /// The parameter.
         /// </param>
-        public void FilePathBrowser(object parameter)
+        private void FilePathBrowser(object parameter)
         {
-            iconFile.SelectIcon();
-            IconPath = iconFile.FilePath;
+            this.iconFile.SelectIcon();
+            this.IconPath = this.iconFile.FilePath;
         }
 
         /// <summary>
@@ -134,9 +135,9 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public bool CanExecute(object parameter)
+        private bool CanExecute(object parameter)
         {
-            return Utilities.Validate(paths.FolderPath, paths.IconPath);
+            return Utilities.Validate(this.paths.FolderPath, this.paths.IconPath);
         }
 
         /// <summary>
@@ -145,9 +146,9 @@
         /// <param name="parameter">
         /// The parameter.
         /// </param>
-        public void Execute(object parameter)
+        private void Execute(object parameter)
         {
-            OutputProcessing.Execute(FolderPath, IconPath, DriveName);
+            OutputProcessing.Execute(this.FolderPath, this.IconPath, this.DriveName);
         }
     }
 }

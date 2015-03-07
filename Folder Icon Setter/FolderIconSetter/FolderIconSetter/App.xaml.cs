@@ -1,16 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="App.xaml.cs" company="">
-//
-// </copyright>
-// <summary>
-//   Interaction logic for App.xaml
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Windows;
-
-namespace FolderIconSetter
+﻿namespace FolderIconSetter
 {
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

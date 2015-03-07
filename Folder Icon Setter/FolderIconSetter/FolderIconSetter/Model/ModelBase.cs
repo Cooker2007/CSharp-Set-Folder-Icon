@@ -1,6 +1,4 @@
-﻿
-
-namespace FolderIconSetter.Model
+﻿namespace FolderIconSetter.Model
 {
     using System;
     using System.ComponentModel;
@@ -11,28 +9,16 @@ namespace FolderIconSetter.Model
     /// </summary>
     internal class ModelBase : INotifyPropertyChanged
     {
+        #region Events
+
         /// <summary>
         /// The property changed event.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        ///  Raise the property changed event.
-        /// </summary>
-        /// <param name="propertyName">
-        /// The property name.
-        /// </param>
-        internal void RaisePropertyChanged(string propertyName)
-        {
-            this.VerifyPropertyName(propertyName);
+        #endregion Events
 
-            var handler = PropertyChanged;
-
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        #region Properties
 
         /// <summary>
         /// Returns whether an exception is thrown, or if a Debug.Fail() is used
@@ -41,6 +27,10 @@ namespace FolderIconSetter.Model
         /// override this property's getter to return true.
         /// </summary>
         protected virtual bool ThrowOnInvalidPropertyName { get; private set; }
+
+        #endregion Properties
+
+        #region Methods
 
         /// <summary>
         /// Warns the developer if this object does not have
@@ -70,5 +60,25 @@ namespace FolderIconSetter.Model
                 }
             }
         }
+
+        /// <summary>
+        ///  Raise the property changed event.
+        /// </summary>
+        /// <param name="propertyName">
+        /// The property name.
+        /// </param>
+        internal void RaisePropertyChanged(string propertyName)
+        {
+            this.VerifyPropertyName(propertyName);
+
+            var handler = this.PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion Methods
     }
 }

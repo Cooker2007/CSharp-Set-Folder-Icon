@@ -1,8 +1,8 @@
 ﻿namespace FolderIconSetter.Utility
 {
-    using FolderIconSetter.Annotations;
     using System.Windows.Forms;
-
+    using FolderIconSetter.Annotations;
+    
     /// <summary>
     /// Wrapper class for OpenFileDialog.
     /// </summary>
@@ -49,7 +49,7 @@
             this.iconFileDialog.CheckFileExists = true;
             this.iconFileDialog.CheckPathExists = true;
 
-            this.Name = "";
+            this.Name = string.Empty;
             this.FullyQualified = string.Empty;
             this.FilePath = string.Empty;
         }
@@ -86,6 +86,7 @@
                 {
                     this.filePath = string.Empty;
                 }
+
                 this.filePath = value;
             }
         }
