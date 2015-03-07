@@ -9,13 +9,16 @@
 
 namespace FolderIconSetter.Model
 {
+    using System;
+    using System.IO;
+
     /// <summary>
     /// The selected paths.
     /// </summary>
     internal class SelectedPaths : ModelBase
     {
         /// <summary>
-        /// The icon path.
+        /// The IconPath backing field.
         /// </summary>
         private string iconPath;
 
@@ -31,7 +34,7 @@ namespace FolderIconSetter.Model
 
             set
             {
-                if (value != null)
+                if (value != null && !this.iconPath.Equals(value))
                 {
                     this.iconPath = value;
                     RaisePropertyChanged("IconPath");
@@ -44,12 +47,12 @@ namespace FolderIconSetter.Model
         }
 
         /// <summary>
-        /// The folder path.
+        /// The FolderPath backing field.
         /// </summary>
         private string folderPath;
 
         /// <summary>
-        /// Gets or sets the folder path.
+        /// Gets or sets the path of the folder to change the icon.
         /// </summary>
         public string FolderPath
         {
@@ -60,7 +63,7 @@ namespace FolderIconSetter.Model
 
             set
             {
-                if (value != null)
+                if (value != null && !this.folderPath.Equals(value))
                 {
                     this.folderPath = value;
                     RaisePropertyChanged("FolderPath");
@@ -73,12 +76,12 @@ namespace FolderIconSetter.Model
         }
 
         /// <summary>
-        /// The drive name.
+        /// The DriveName backing field.
         /// </summary>
         private string driveName;
 
         /// <summary>
-        /// Gets or sets the drive name.
+        /// Gets or sets the custom drive name.
         /// </summary>
         public string DriveName
         {
@@ -89,7 +92,7 @@ namespace FolderIconSetter.Model
 
             set
             {
-                if (value != null)
+                if (value != null && !this.driveName.Equals(value))
                 {
                     this.driveName = value;
                     RaisePropertyChanged("DriveName");
@@ -97,6 +100,28 @@ namespace FolderIconSetter.Model
                 else
                 {
                     this.driveName = string.Empty;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a bool if the paths are on the same root drive.
+        /// </summary>
+        public bool IsRoot
+        {
+            get
+            {
+
+                try
+                {
+                    // If a path is string.Empty an ArgumentException is thrown
+                    string fp = Path.GetPathRoot(this.FolderPath);
+                    string ip = Path.GetPathRoot(this.IconPath);
+                    return fp.Equals(ip);
+                }
+                catch (ArgumentException e)
+                {
+                    return false;
                 }
             }
         }
