@@ -2,6 +2,8 @@
 {
     using System.IO;
 
+    using FolderIconSetter.Model;
+
     /// <summary>
     /// The output processing.
     /// </summary>
@@ -25,32 +27,31 @@
         /// <param name="driveLabel">
         /// The drive label.
         /// </param>
-        public static void Execute(string folderPath, string iconPath, string driveLabel)
+        public static void Execute(SelectedPaths paths)
         {
-            if (CheckFileExists(folderPath))
-            {
+            
                 // Checks if the folder and icon are on same drive
-                if (Utilities.Validate(folderPath, iconPath))
+                if (paths.ShareSameRoot)
                 {
                     bool overwriteFile = false;
                     bool fileExists = false;
 
                     // Check if there is already a .ini/.inf file
-                    if (CheckFileExists(folderPath))
+                    if (CheckFileExists(paths.FolderPath))
                     {
                         // TODO User conformation to overwrite file
                         overwriteFile = true;
                         fileExists = true;
                     }
 
-                    // File does not exist OR can be overridden
+                    // File does not exist AND/OR can be overridden
                     // ReSharper disable once ConditionIsAlwaysTrueOrFalse
                     if (!fileExists || overwriteFile)
                     {
                         // Set the folder attributes for non-root folders
-                        if (!IsDisplayFolderRoot(folderPath))
+                        if (!IsDisplayFolderRoot(paths.FolderPath))
                         {
-                            DirectoryInfo directoryInfo = new DirectoryInfo(folderPath);
+                            DirectoryInfo directoryInfo = new DirectoryInfo(paths.FolderPath);
 
                             if (!directoryInfo.Attributes.IsSet(FileAttributes.System))
                             {
@@ -59,40 +60,28 @@
                         }
 
                         // Text File output
-                        // Deletes file if one exists
-                        if (fileExists)
-                        {
-                            if (IsDisplayFolderRoot(folderPath))
-                            {
-                                RemoveFileAttributes(folderPath + "\\autorun.inf");
-                            }
-                            else
-                            {
-                                RemoveFileAttributes(folderPath + "\\desktop.ini");
-                            }
-                        }
-
-                        TextFileOutput.WriteNew(IsDisplayFolderRoot(folderPath), folderPath, iconPath, driveLabel);
+                        // Deletes the file if one exists
+                        TextFileOutput.WriteFile(paths);
                     }
                 }
-            }
+            
         }
 
         /// <summary>
         /// Check if output file exists
         /// </summary>
-        /// <param name="displayFolderDirectory">
+        /// <param name="folderPath">
         /// The path of the folder to change.
         /// </param>
         /// <returns>
         /// Returns a bool value
         /// </returns>
-        public static bool CheckFileExists(string displayFolderDirectory)
+        public static bool CheckFileExists(string folderPath)
         {
             // Case Insensitive on Windows
-            return IsDisplayFolderRoot(displayFolderDirectory)
-                       ? File.Exists(displayFolderDirectory + "autorun.inf")
-                       : File.Exists(displayFolderDirectory + "desktop.ini");
+            return IsDisplayFolderRoot(folderPath)
+                       ? File.Exists(folderPath + "autorun.inf")
+                       : File.Exists(folderPath + "desktop.ini");
         }
 
         /// <summary>
@@ -117,7 +106,6 @@
         /// </param>
         public static void RemoveSystemFileAttribute(string displayFolderDirectory)
         {
-            // TODO Check if filename is case sensitive
             if (IsDisplayFolderRoot(displayFolderDirectory))
             {
                 displayFolderDirectory += "autorun.inf";

@@ -2,16 +2,16 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="12.0">
  <Targets>
-  <Target Name="C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\obj\Debug\Before-PostSharp\FolderIconSetter.exe">
+  <Target Name="C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetter\bin\Debug\FolderIconSetter.exe">
    <Modules>
     <Module Name="foldericonsetter.exe">
      <Namespaces>
-      <Namespace Name="FolderIconSetter.Utility">
+      <Namespace Name="FolderIconSetter.ViewModel">
        <Types>
-        <Type Name="OpenFolder" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+        <Type Name="ViewModelMain" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2015-03-02 19:27:44Z" FixCategory="NonBreaking">
-           <Issue Name="NonBreaking" Certainty="95" Level="CriticalError">Implement IDisposable on 'OpenFolder' because it creates members of the following IDisposable types: 'FolderBrowserDialog'.</Issue>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2015-03-12 18:36:14Z" FixCategory="NonBreaking">
+           <Issue Name="NonBreaking" Certainty="95" Level="CriticalError">Implement IDisposable on 'ViewModelMain' because it creates members of the following IDisposable types: 'OpenFolder'.</Issue>
           </Message>
          </Messages>
         </Type>

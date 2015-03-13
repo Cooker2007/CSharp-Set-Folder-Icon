@@ -1,5 +1,7 @@
 ﻿namespace FolderIconSetter.ViewModel
 {
+    using System.Windows.Input;
+
     using FolderIconSetter.Model;
     using FolderIconSetter.Utility;
 
@@ -35,12 +37,14 @@
             this.ExecuteCommand = new RelayCommand(this.Execute, this.CanExecute);
             this.FolderPathBrowserCommand = new RelayCommand(this.FolderPathBrowser);
             this.FilePathBrowserCommand = new RelayCommand(this.FilePathBrowser);
+
+
         }
 
         /// <summary>
         /// Gets or sets the execute command.
         /// </summary>
-        public RelayCommand ExecuteCommand { get; set; }
+        public ICommand ExecuteCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the folder path browser command.
@@ -65,7 +69,10 @@
             set
             {
                 this.paths.FolderPath = value;
+
+                //// Todo Do I nee to raise event here and in the model?
                 this.RaisePropertyChanged("FolderPath");
+                this.RaisePropertyChanged("IsCustomDriveNameEnabled");
             }
         }
 
@@ -83,6 +90,15 @@
             {
                 this.paths.IconPath = value;
                 this.RaisePropertyChanged("IconPath");
+                this.RaisePropertyChanged("IsCustomDriveNameEnabled");
+            }
+        }
+
+        public bool IsCustomDriveNameEnabled
+        {
+            get
+            {
+                return paths.IsFolderPathRoot;
             }
         }
 
@@ -123,7 +139,7 @@
         private void FilePathBrowser(object parameter)
         {
             this.iconFile.SelectIcon();
-            this.IconPath = this.iconFile.FilePath;
+            this.IconPath = this.iconFile.FullyQualified;
         }
 
         /// <summary>
@@ -137,7 +153,8 @@
         /// </returns>
         private bool CanExecute(object parameter)
         {
-            return Utilities.Validate(this.paths.FolderPath, this.paths.IconPath);
+            bool result = paths.Validate();
+            return result;
         }
 
         /// <summary>
@@ -148,7 +165,7 @@
         /// </param>
         private void Execute(object parameter)
         {
-            OutputProcessing.Execute(this.FolderPath, this.IconPath, this.DriveName);
+            OutputProcessing.Execute(paths);
         }
     }
 }

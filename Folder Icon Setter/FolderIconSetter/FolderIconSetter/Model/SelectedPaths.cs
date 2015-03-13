@@ -27,6 +27,13 @@
 
         #endregion Fields
 
+        public SelectedPaths()
+        {
+            driveName = string.Empty;
+            folderPath = string.Empty;
+            iconPath = string.Empty;
+        }
+
         #region Properties
 
         /// <summary>
@@ -36,7 +43,7 @@
         {
             get
             {
-                return this.driveName ?? (this.driveName = string.Empty);
+                return this.driveName ?? (this.driveName = String.Empty);
             }
 
             set
@@ -46,9 +53,9 @@
                     this.driveName = value;
                     this.RaisePropertyChanged("DriveName");
                 }
-                else
+                else if (value == null)
                 {
-                    this.driveName = string.Empty;
+                    this.driveName = String.Empty;
                 }
             }
         }
@@ -60,7 +67,7 @@
         {
             get
             {
-                return this.folderPath ?? (this.folderPath = string.Empty);
+                return this.folderPath ?? (this.folderPath = String.Empty);
             }
 
             set
@@ -70,21 +77,21 @@
                     this.folderPath = value;
                     this.RaisePropertyChanged("FolderPath");
                 }
-                else
+                else if (value == null)
                 {
-                    this.folderPath = string.Empty;
+                    this.folderPath = String.Empty;
                 }
             }
         }
 
         /// <summary>
-        ///     Gets or sets the icon path.
+        ///     Gets or sets the icon file path.
         /// </summary>
         public string IconPath
         {
             get
             {
-                return this.iconPath ?? (this.iconPath = string.Empty);
+                return this.iconPath ?? (this.iconPath = String.Empty);
             }
 
             set
@@ -94,31 +101,43 @@
                     this.iconPath = value;
                     this.RaisePropertyChanged("IconPath");
                 }
-                else
+                else if (value == null)
                 {
-                    this.iconPath = string.Empty;
+                    this.iconPath = String.Empty;
                 }
+            }
+        }
+
+        public bool IsFolderPathRoot
+        {
+            get
+            {
+                bool result = false;
+                if (!string.IsNullOrWhiteSpace(this.FolderPath))
+                {
+                    string fp = Path.GetPathRoot(this.FolderPath);
+                    result = fp == FolderPath;
+                }
+                return result;
+
             }
         }
 
         /// <summary>
         ///     Gets a value indicating whether the paths share the same root.
         /// </summary>
-        public bool IsRoot
+        public bool ShareSameRoot
         {
             get
             {
-                try
+                if (!string.IsNullOrWhiteSpace(FolderPath) || !string.IsNullOrWhiteSpace(IconPath))
                 {
                     // If a path is string.Empty an ArgumentException is thrown
                     string fp = Path.GetPathRoot(this.FolderPath);
                     string ip = Path.GetPathRoot(this.IconPath);
                     return fp.Equals(ip);
                 }
-                catch (ArgumentException e)
-                {
-                    return false;
-                }
+                return false;
             }
         }
 
@@ -143,5 +162,23 @@
         }
 
         #endregion Properties
+
+        /// <summary>
+        /// Validates the selected paths
+        /// </summary>
+        public bool Validate()
+        {
+            if (this.ShareSameRoot)
+            {
+                if (Directory.Exists(folderPath))
+                {
+                    if (File.Exists(iconPath))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }

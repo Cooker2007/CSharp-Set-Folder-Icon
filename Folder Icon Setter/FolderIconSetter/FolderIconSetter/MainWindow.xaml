@@ -50,33 +50,41 @@
             </Grid.Background>
 
             <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Select Folder or Drive:" Height="16"
-                   Margin="10,10,0,0" Width="116" Padding="0" />
+                   Margin="10,10,0,0" Width="116" Padding="0" ToolTip="The folder to change the icon." />
             <Label HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Content="Select Icon:"
-                   Height="16" Width="60" Padding="0" />
-            <Label Margin="0,101,10,0" Content="Icon must be same on same drive as the selected folder"
+                   Height="16" Width="60" Padding="0" ToolTip="The Icon(.ico) file to display." />
+            <Label Margin="0,101,2,0" Content="Icon must be same on same drive as the selected folder"
                    VerticalAlignment="Top" Height="16" HorizontalAlignment="Right" Width="294" Padding="0" />
             <TextBlock HorizontalAlignment="Left" Margin="10,0,0,36" TextWrapping="Wrap" Width="170" Grid.Row="1"
-                       Height="32" VerticalAlignment="Bottom">
+                       Height="32" VerticalAlignment="Bottom" ToolTip="Change display name in My Computer">
                 <Run Text="Custom Drive Name:" /><LineBreak /><Run Text="(For Hard Drives or Flash Drives)" />
             </TextBlock>
             <TextBox x:Name="DisplayFolderTextBox"
                      Text="{Binding Path=FolderPath, UpdateSourceTrigger=PropertyChanged }" Height="22"
                      Margin="10,28,2,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="1" IsEnabled="False"
-                     IsReadOnly="True" />
+                     IsReadOnly="True" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" ToolTip="The folder to change the icon." />
             <TextBox x:Name="SelectIconFileTextBox"
                      Text="{Binding Path=IconPath, UpdateSourceTrigger=PropertyChanged }" Height="22"
                      Margin="10,74,2,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="2" IsEnabled="False"
-                     IsReadOnly="True" />
+                     IsReadOnly="True" Background="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" ToolTip="The Icon(.ico) file to display." >
+                <TextBox.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
+                        <GradientStop Color="#FFABADB3" Offset="0.958"/>
+                        <GradientStop Color="#FFE2E3EA" Offset="0.973"/>
+                        <GradientStop Color="#FFE3E9EF" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBox.BorderBrush>
+            </TextBox>
             <TextBox x:Name="CustomDriveNameTextBox"
-                     Text="{Binding Path=DriveName, UpdateSourceTrigger=PropertyChanged }" HorizontalAlignment="Left"
-                     Margin="10,0,0,9" TextWrapping="Wrap" Width="180" TabIndex="4" IsEnabled="False" Grid.Row="1"
-                     Height="23" VerticalAlignment="Bottom" />
+                     Text="{Binding Path=DriveName, UpdateSourceTrigger=PropertyChanged }" IsEnabled="{Binding Path=IsCustomDriveNameEnabled}" HorizontalAlignment="Left"
+                     Margin="10,0,0,9" TextWrapping="Wrap" Width="180" TabIndex="4" Grid.Row="1"
+                     Height="23" VerticalAlignment="Bottom" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
             <Button x:Name="DisplayFolderPathButton" Command="{Binding FolderPathBrowserCommand}" Content="Browse..."
                     Margin="0,28,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="22" Width="55"
-                    Grid.Column="1" />
+                    Grid.Column="1" ToolTip="Select the folder." />
             <Button x:Name="IconFileButton" Command="{Binding FilePathBrowserCommand}" Content="Browse..."
                     Margin="0,74,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="22" Width="55"
-                    Grid.Column="1" />
+                    Grid.Column="1" ToolTip="Select the icon file." />
         </Grid>
         <Button x:Name="ExecuteButton" Command="{Binding ExecuteCommand}" Content="_Execute"
                 HorizontalAlignment="Right" Margin="0,0,10,10" Width="75" TabIndex="5" Height="22"

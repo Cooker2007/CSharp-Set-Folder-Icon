@@ -90,7 +90,7 @@
         [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {
-            return this.canExecute == null ? true : this.canExecute(parameter);
+            return this.canExecute == null || this.canExecute(parameter);
         }
 
         /// <summary>

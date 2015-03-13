@@ -8,7 +8,7 @@
     /// <summary>
     /// The open folder.
     /// </summary>
-    internal class OpenFolder
+    internal class OpenFolder : IDisposable
     {
         //// TODO Change to a file browser
 
@@ -66,5 +66,10 @@
         }
 
         #endregion Methods
+
+        public void Dispose()
+        {
+            this.displayFolderDialog.Dispose();
+        }
     }
 }

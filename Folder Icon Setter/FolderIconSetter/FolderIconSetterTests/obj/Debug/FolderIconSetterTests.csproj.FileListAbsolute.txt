@@ -1,1 +1,9 @@
 C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\obj\Debug\FolderIconSetterTests.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\bin\Debug\FolderIconSetterTests.dll
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\bin\Debug\FolderIconSetterTests.pdb
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\bin\Debug\FolderIconSetter.exe
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\bin\Debug\nunit.framework.dll
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\bin\Debug\FolderIconSetter.pdb
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\bin\Debug\nunit.framework.xml
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\obj\Debug\FolderIconSetterTests.dll
+C:\Users\Michael\Documents\GitHub\CSharp-Set-Folder-Icon\Folder Icon Setter\FolderIconSetter\FolderIconSetterTests\obj\Debug\FolderIconSetterTests.pdb
