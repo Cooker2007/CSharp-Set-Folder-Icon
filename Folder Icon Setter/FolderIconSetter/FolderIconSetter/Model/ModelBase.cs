@@ -7,7 +7,7 @@
     /// <summary>
     /// The base class for the models.
     /// </summary>
-    internal class ModelBase : INotifyPropertyChanged
+    public class ModelBase : INotifyPropertyChanged
     {
         #region Events
 

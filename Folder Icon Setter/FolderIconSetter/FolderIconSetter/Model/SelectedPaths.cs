@@ -3,35 +3,40 @@
     using System;
     using System.IO;
 
+    using FolderIconSetter.Annotations;
+
     /// <summary>
     ///     The selected paths.
     /// </summary>
-    internal class SelectedPaths : ModelBase
+    public class SelectedPaths : ModelBase
     {
         #region Fields
 
         /// <summary>
         ///     The DriveName backing field.
         /// </summary>
+        [NotNull]
         private string driveName;
 
         /// <summary>
         ///     The FolderPath backing field.
         /// </summary>
+        [NotNull]
         private string folderPath;
 
         /// <summary>
         ///     The IconPath backing field.
         /// </summary>
+        [NotNull]
         private string iconPath;
 
         #endregion Fields
 
         public SelectedPaths()
         {
-            driveName = string.Empty;
-            folderPath = string.Empty;
-            iconPath = string.Empty;
+            this.driveName = string.Empty;
+            this.folderPath = string.Empty;
+            this.iconPath = string.Empty;
         }
 
         #region Properties
@@ -39,23 +44,20 @@
         /// <summary>
         ///     Gets or sets the custom drive name.
         /// </summary>
+        [NotNull]
         public string DriveName
         {
             get
             {
-                return this.driveName ?? (this.driveName = String.Empty);
+                return this.driveName;
             }
 
             set
             {
-                if (value != null && !this.driveName.Equals(value))
+                if (!this.driveName.Equals(value))
                 {
-                    this.driveName = value;
+                    this.driveName = value ?? string.Empty;
                     this.RaisePropertyChanged("DriveName");
-                }
-                else if (value == null)
-                {
-                    this.driveName = String.Empty;
                 }
             }
         }
@@ -63,23 +65,20 @@
         /// <summary>
         ///     Gets or sets the path of the folder to change the icon.
         /// </summary>
+        [NotNull]
         public string FolderPath
         {
             get
             {
-                return this.folderPath ?? (this.folderPath = String.Empty);
+                return this.folderPath;
             }
 
             set
             {
-                if (value != null && !this.folderPath.Equals(value))
+                if (!this.folderPath.Equals(value))
                 {
-                    this.folderPath = value;
+                    this.folderPath = value ?? string.Empty;
                     this.RaisePropertyChanged("FolderPath");
-                }
-                else if (value == null)
-                {
-                    this.folderPath = String.Empty;
                 }
             }
         }
@@ -87,23 +86,20 @@
         /// <summary>
         ///     Gets or sets the icon file path.
         /// </summary>
+        [NotNull]
         public string IconPath
         {
             get
             {
-                return this.iconPath ?? (this.iconPath = String.Empty);
+                return this.iconPath;
             }
 
             set
             {
-                if (value != null && !this.iconPath.Equals(value))
+                if (!this.iconPath.Equals(value))
                 {
-                    this.iconPath = value;
+                    this.iconPath = value ?? string.Empty;
                     this.RaisePropertyChanged("IconPath");
-                }
-                else if (value == null)
-                {
-                    this.iconPath = String.Empty;
                 }
             }
         }
@@ -116,7 +112,7 @@
                 if (!string.IsNullOrWhiteSpace(this.FolderPath))
                 {
                     string fp = Path.GetPathRoot(this.FolderPath);
-                    result = fp == FolderPath;
+                    result = fp == this.FolderPath;
                 }
                 return result;
 
@@ -130,7 +126,7 @@
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(FolderPath) || !string.IsNullOrWhiteSpace(IconPath))
+                if (!string.IsNullOrWhiteSpace(this.FolderPath) && !string.IsNullOrWhiteSpace(this.IconPath))
                 {
                     // If a path is string.Empty an ArgumentException is thrown
                     string fp = Path.GetPathRoot(this.FolderPath);
@@ -148,7 +144,7 @@
         {
             get
             {
-                Uri folder = new Uri(this.FolderPath);
+                Uri folder = new Uri(this.FolderPath + "\\file.temp");
                 Uri icon = new Uri(this.IconPath);
                 Uri relativeUri = folder.MakeRelativeUri(icon);
 
@@ -159,6 +155,7 @@
 
                 return relativePath;
             }
+
         }
 
         #endregion Properties
@@ -170,9 +167,9 @@
         {
             if (this.ShareSameRoot)
             {
-                if (Directory.Exists(folderPath))
+                if (Directory.Exists(this.folderPath))
                 {
-                    if (File.Exists(iconPath))
+                    if (File.Exists(this.iconPath))
                     {
                         return true;
                     }
